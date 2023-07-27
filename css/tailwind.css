@@ -484,8 +484,8 @@ html {
   width: 65px;
   overflow: hidden;
   border-radius: 6px 0 0 6px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   vertical-align: middle;
 }
 
