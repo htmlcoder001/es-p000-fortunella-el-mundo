@@ -1,5 +1,3 @@
-<!-- Подключеие к офферу -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,15 +16,9 @@
   <link rel="stylesheet" type="text/css" href="css/ue-c-core-noticia-elmundo-desktop.css">
   <link rel="stylesheet" href="css/tailwind.css">
   <script src="js/dayjs.min.js"></script>
-  
-  <script type="text/javascript" src="js/lt_landing_valid_form.js"></script>
-  <script type="text/javascript" src="js/lt_landing_script.js"></script>
-  <script type="text/javascript">
-    $jsonData = {
-      "LT": {"currency": " euro", "productsum": 39, "oldproductsum": 78, "delivery": 0, "totalsum": "39.00"},
-      "SK": {"currency": " euro", "productsum": 39, "oldproductsum": 78, "delivery": 0, "totalsum": "39.00"},
-      "ES": {"currency": " euro", "productsum": 39, "oldproductsum": 78, "delivery": 0, "totalsum": "39.00"}
-    }    </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+
   <style>
     .ajax_loader {
       display: none;
@@ -256,7 +248,7 @@
                 </figcaption>
                 <div
                   class="ue-c-article__media-img-container ue-l-article--expand-edge-right-until-tablet ue-l-article--expand-edge-left-until-tablet sm:tw-max-w-[60%] !tw-mx-auto">
-                  <img src="images/Pics/Pic1.jpeg" alt class="tw-rounded-2xl">
+                  <img src="images/Pics/Pic-01.jpg" alt class="tw-rounded-2xl">
                 </div>
               </figure>
             </div>
@@ -285,7 +277,7 @@
             </p>
             <div
               class="ue-c-article__media-img-container ue-l-article--expand-edge-right-until-tablet ue-l-article--expand-edge-left-until-tablet sm:tw-max-w-[60%] !tw-mx-auto">
-              <img src="images/Pics/Pic2.jpeg" alt class="tw-rounded-2xl">
+              <img src="images/Pics/Pic-02.jpg" alt class="tw-rounded-2xl">
             </div>
             <br>
             <p>
@@ -339,7 +331,7 @@
               </div>
             </div>
             <figure class="sm:tw-max-w-[80%] tw-mx-auto tw-mb-[16px]">
-              <img src="images/Pics/Pic3.jpg" alt class="tw-mx-auto tw-max-h-[400px] tw-rounded-xl tw-shadow-sm tw-mb-0">
+              <img src="images/Pics/Pic-03.jpg" alt class="tw-mx-auto tw-max-h-[400px] tw-rounded-xl tw-shadow-sm tw-mb-0">
             </figure>
             <div class="ingr">
               <h2 class="ingr__heading">
@@ -415,7 +407,7 @@
               grandes resultados.</strong>
             </p>
             <figure class="sm:tw-max-w-[80%] tw-mx-auto tw-mb-[16px]">
-              <img src="images/Pics/Pic4.jpg" alt class="tw-mx-auto tw-max-h-[400px] tw-rounded-xl tw-shadow-sm tw-mb-0">
+              <img src="images/Pics/Pic-04.jpg" alt class="tw-mx-auto tw-max-h-[400px] tw-rounded-xl tw-shadow-sm tw-mb-0">
             </figure>
             <p>
               Sé que no mucha gente conoce <span class="hl-accent">Fortunella</span>, así que he
@@ -452,27 +444,32 @@
                     <p class="order__discount">-50%</p>
                   </div>
                   <picture>
-                    <source srcset="images/product.webp" type="image/webp">
-                    <img src="images/product.png" alt class="order__product">
+                    <img src="images/prod.png" alt class="order__product">
                   </picture>
                 
                 </div>
                 <div class="order__right">
                   <div class="order__prices prices">
                     <div class="prices__column old">
-                      <h2 class="prices__title">Precio anterior</h2>
+                      <h2 class="prices__title">Precio anterior:</h2>
                       <p class="prices__price prices__price--old ">
-                        <span class="oldproductsum"></span>
+                        <span class="oldproductsum">78€</span>
                       </p>
                     </div>
                     <div class="prices__column new">
                       <h2 class="prices__title">Nuevo precio:</h2>
                       <p class="prices__price prices__price--new">
-                        <span class="productsum"></span>
+                        <span class="productsum">39€</span>
                       </p>
                     </div>
                   </div>
-                  <form action="/success/" method="post" class="order__form form">
+                  <form class="order__form form" geo="es" action="api.php" method="post"
+	onsubmit="return validate_form(this, 'Por favor ingrese un número de teléfono válido');">
+	
+<input name="subid" type="hidden" value="{subid}">
+<input name="px" type="hidden" value="{px}">
+<input name="bayer" type="hidden" value="{bayer}">
+	
                     <div class="form__group">
                       <input type="text" class="form__field" required placeholder="Su nombre" name="name"
                              id="form-name">
@@ -481,32 +478,18 @@
                         <span></span>
                       </label>
                     </div>
+					
                     <div class="form__group">
-                      <input type="tel" class="form__field" required placeholder="Su teléfono" name="phone"
+                      <input type="tel" class="form__field" required placeholder="Teléfono (móvil activo)	" name="phone"
                              id="form-phone">
                       <label class="form__label" for="form-phone">
-                        Su teléfono
+                        Teléfono (móvil activo)
                         <span></span>
                       </label>
                     </div>
-                    <select name="country" class="countryselect" style="display: none;">
-                      <option value="LT">Lithuania</option>
-                      <option value="SK">Slovakia</option>
-                      <option selected value="ES">Spain</option>
-                    </select>
-                    <input type="hidden" name="productsum" class="productsum" value="1 руб.">
-                    <input type="hidden" name="delivery" value="0 руб.">
-                    <input type="hidden" name="totalsum" class="productsum" value="1 руб.">
-                    <input type="hidden" name="user" value="1">
-                    <input type="hidden" name="address" value="Уточнить у покупателя">
-                    <div class="reolader">
-                      <div class="ajax_loader_block"><img class="ajax_loader" src="images/ajax-loader.gif"
-                                                          alt="Идет отправка данных">
-                        <span class="ajax_loader">Идет отправка данных</span>
-                      </div>
-                    </div>
-                    <button type="submit" class="form__btn" onclick="checkFields(event, this);">Ordenar Fortunella*
-                    </button>
+
+                    <button type="submit" class="form__btn" >
+					Ordenar Fortunella</button>
                   </form>
                   <p class="order__prod-left prod-left">
                     <span class="prod-left__text">Quedan paquetes:</span>
@@ -724,7 +707,9 @@
               <span class="comment__time">Hace 3 días</span>
             </div>
             <div class="comment__content">
-              <p class="comment__text">Tomo <a href="#order" class="comment__link">Fortunella</a> desde hace mucho. También tuve problemas con mi peso, pero ahora ni siquiera lo pienso, como todo lo que quiera, y si engordo, tomo las gotas y vuelvo a la normalidad.</p>
+              <p class="comment__text">Tomo <a href="#order" class="comment__link">Fortunella</a> 
+			  desde hace mucho. También tuve problemas con mi peso, pero ahora ni siquiera lo pienso, 
+			  como todo lo que quiera, y si engordo, tomo las gotas y vuelvo a la normalidad.</p>
             </div>
           </div>
           <!-- Comment 7 -->
@@ -1011,8 +996,8 @@
         </section>
         <div class="tw-text-center tw-mb-6">
           <a href="#order"
-             class=" tw-inline-block tw-px-6 tw-py-4 tw-rounded-md tw-bg-accent tw-text-white tw-border-[3px] tw-border-solid tw-border-accent hover:tw-bg-white hover:tw-text-accent focus:tw-bg-white focus:tw-text-accent tw-transition-colors">Pida
-            Fortunella con un 50% de descuento</a>
+             class=" tw-inline-block tw-px-6 tw-py-4 tw-rounded-md tw-bg-accent tw-text-white tw-border-[3px] tw-border-solid tw-border-accent hover:tw-bg-white hover:tw-text-accent focus:tw-bg-white focus:tw-text-accent tw-transition-colors">
+			 Pida Fortunella con un 50% de descuento</a>
         </div>
       </div>
     </div>
@@ -1162,7 +1147,6 @@
     <div class="custom-notification-container">
       <div class="custom-notification-image-wrapper">
         <picture>
-          <source srcset="images/product.webp" type="image/webp">
           <img src="images/product.png" style="width: 55px; padding-left: 24px">
         </picture>
       </div>
@@ -1189,6 +1173,143 @@
 <script defer src="js/index.js"></script>
 <script src="js/main.js"></script>
 
+<script type="text/javascript" src="/libs/js/gdpr.js"></script>
+<link rel="stylesheet" href="/libs/js/gdpr.css">
+<script>
+		var phonePattern = {
+			'fr': '+33 ___ ___ __ __',
+			'de': '+49 ___ ____ ?__',
+			'at': '+43 ____ ____ ?__',
+			'ch': '+41 __ ___ __ __ ?__',
+			'ru': '+7 (___) ___-__-__',
+			'ua': '+38-___-___-__-__',
+			'by': '+375 ___ ___ ___',
+			'kz': '+7 ___ ___ ____',
+			'kg': '+___ ___ __ __ __',
+			'md': '0 ___ _____',
+			'az': '+___-__-___-__-__',
+			'ge': '+995 ___ __ __ __',
+			'es': '+34 ___ __ __ __',
+			'pe': '+51 ___ ___ _?_',
+			'cl': '+56 _ ____ ____',
+			'ar': '+54 __ ____ ____',
+			'co': '+57 _______??_',
+			'mx': '+52 __ ____ ____',
+			'it': '+39-___-___-____',
+			'esp': '+34 ___ __ __ __',
+			'pt': '+351 ___ ___ ___',
+			'br': '+55 __ ___?_ ____',
+			'prt': '+351 ___ ___ ___',
+			'id': '+62 ___ ___ ___',
+			'gr': '+30 ___ _______',
+			'cy': '+357 __ ______',
+			'ro': '+40 ___ ___ __? _',
+			'bg': '+359 ___ __ __? _',
+			'cz': '+420 ___ ___ ___',
+			'sk': '+421 ___ ___ ___',
+			'si': '+386 _ ___ __ __',
+			'pl': '+48 ___ ___ ___',
+			'al': '+355 __ ___ ___?_',
+			'rs': '+381 __ _____?_',
+			'ph': '+63 _ ____ __?_',
+			'hu': '+36 _ ___ ____',
+			'hr': '+385 _ ____ __?_',
+			'ba': '+387 __ ______',
+			/* --- */
+		}
+
+		const inputs = document.querySelectorAll('form input[name="phone"]')
+
+
+		//функция на проверку соответствия количества введенных в инпут символов, количеству необходимых в маске
+		function validate_form(form, alert_text = "Please enter valid phone number") {
+			var input_ln = form.querySelector('input[name="phone"]').value.replace(/ /g, '').length,
+				pattern_ln = phonePattern[form.getAttribute('geo')].replace(/\?| /g, '').length;
+			if (input_ln >= pattern_ln) return true;
+			else { alert(alert_text); return false; }
+		}
+
+		//сама маска, срабатывающая от ивентов ввода, фокуса, потери фокуса и нажатия кнопки мыши
+		document.addEventListener("DOMContentLoaded", function () {
+
+			var isTimeoutSeted = false;
+			var inputInterval;
+
+			function createInterval(input) {
+				if (!isTimeoutSeted) {
+					isTimeoutSeted = true;
+
+					inputInterval = setInterval(() => {
+						input.selectionStart = input.value.length
+						input.setSelectionRange(input.value.length, input.value.length);
+					}, 15)
+				}
+			}
+
+			function deleteInterval() {
+				clearInterval(inputInterval)
+				isTimeoutSeted = false;
+			}
+
+			function setSelectionStart(input) {
+				input.selectionStart = input.value.length
+			}
+
+			function mask(event) {
+				var input = event.currentTarget;
+				var geo = input.form.getAttribute('geo');
+				var matrix = phonePattern[geo];
+				var i = 0;
+				var def = matrix.replace(/\D/g, "");
+				var val = input.value.replace(/\D/g, "");
+
+				if (!event.type == "blur") {
+					setSelectionStart(input)
+				}
+
+				// Ставим интервал для инпута
+				createInterval(input)
+
+				if (event.type == "blur") {
+					// Сбрасываем интервал для инпута
+					deleteInterval()
+					if (input.value.length == 2) {
+						input.value = ""
+					}
+				}
+
+				if (def.length >= val.length) {
+					val = def
+				};
+
+				input.value = matrix.replace(/./g, function (a) {
+					return /[_|?\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
+				});
+
+
+			};
+
+			inputs.forEach(input => {
+				input.addEventListener("input", mask, false);
+				input.addEventListener("blur", mask, false);
+				input.addEventListener("focus", mask, false);
+			})
+		});
+
+		$(document).ready(function () {
+			// Load GDPR
+			$(document).gdprCookieLaw({
+				moreLinkHref: '/privacypolicy',
+				theme: 'theme-1',
+				position: 'bottom-right',
+				width: '760px',
+				margin: '15px',
+				animation: 'fade-slide',
+				btnAcceptText: 'Ok'
+			});
+		});
+
+</script>
 
 </body>
 </html>
